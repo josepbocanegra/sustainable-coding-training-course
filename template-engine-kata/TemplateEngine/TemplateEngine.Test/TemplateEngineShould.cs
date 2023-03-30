@@ -45,7 +45,7 @@ public class TemplateEngineShould
     }
     
     [Fact]
-    public void ParseTemplateWithOneMissingVariable()
+    public void ParseTemplateWithOneMissingVariable() //MissingVariablesAreReportedAsError
     {
         var templateEngine = new Engine();
         var dictionary = new Dictionary<string, string>() { { "name", "John"} };
@@ -57,3 +57,6 @@ public class TemplateEngineShould
         parsedText.Error.Should().Be("There is a missing variable on the dictionary");
     }
 }
+
+/* Encapsular la parte de setup para eliminar duplicidad
+Los nombre describen demasiado el input */
