@@ -14,6 +14,15 @@ public class Engine
             text = text.Replace("${" + variable.Key + "}", variable.Value);
         }
 
+        if (System.Text.RegularExpressions.Regex.IsMatch(text, @"\${\w+}"))
+        {
+            return new ParsedText()
+            {
+                Text = text,
+                Error = "There is a missing variable on the dictionary"
+            };
+        }
+
         return new ParsedText()
         {
             Text = text
