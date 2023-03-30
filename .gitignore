@@ -1,5 +1,79 @@
+# Compiled Object files
+*.sln.cache
+*.suo
+*.obj
+*.pdb
+*.exe
+*.dll
+*.msi
+*.log
+*.vs/
+*.vshost.exe
+*.vspscc
+
+# Visual Studio files
+[Bb]in/
+[Oo]bj/
+*.user
+*.aps
+*.pch
+*.vspscc
+*.vssscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.cache
+*.ilk
+*.log
+*.lib
+*.sbr
+*.scc
+*.sdf
+*.opensdf
+*.sln.docstates
+*.VC.db
+*.VC.VC.opendb
+*.sln.snap
+*.tlog/
+
+# Rider files
 .idea/
-build/
-.DS_Store
-*.iml
-.node_modules/
+
+# Packages
+# It's recommended to not store the packages folder in source control
+# Instead, use a NuGet.config file to enable NuGet package restore
+packages/
+
+# Miscellaneous
+*.DS_Store
+*.cache
+*.log
+*.pidb
+*.userprefs
+*.hjson
+Thumbs.db
+[Tt]est[Rr]esult*
+_ReSharper*
+*.resharper*
+*.ncrunch*
+__Resharper*
+
+# Temp files
+*.[Cc]ache
+*.lock
+*.bak
+*.tmp
+*.tmp.*
+*.~*
+*~
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+bin/
+obj/
