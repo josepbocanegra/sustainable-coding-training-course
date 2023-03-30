@@ -14,13 +14,17 @@ public class WordWrapperShould
 // "", 4 -> ???
 // "hola", 0 -> ???
 
-    [Fact]
-    public void NotWrapText()
+    [Theory]
+    [InlineData("hola", "hola")]
+    [InlineData("jose", "jose")]
+    public void NotWrapText(string text, string expected)
     {
         var wordWrapper = new WordWrapper();
         
-        var wrappedText = wordWrapper.Wrap("hola", 4);
+        var wrappedText = wordWrapper.Wrap(text, 4);
         
-        wrappedText.Should().Be("hola");
+        wrappedText.Should().Be(expected);
     }
+    
+
 }
