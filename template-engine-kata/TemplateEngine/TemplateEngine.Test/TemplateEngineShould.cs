@@ -44,4 +44,16 @@ public class TemplateEngineShould
         parsedText.Text.Should().Be("Hello John Smith");
     }
     
+    [Fact]
+    public void ParseTemplateWithOneMissingVariable()
+    {
+        var templateEngine = new Engine();
+        var dictionary = new Dictionary<string, string>() { { "name", "John"} };
+        var template = "Hello ${name} ${lastName}";
+        
+        var parsedText = templateEngine.Parse(dictionary, template);
+        
+        parsedText.Text.Should().Be("Hello John ${lastName}");
+        parsedText.Error.Should().Be("There is a missing variable on the dictionary");
+    }
 }
