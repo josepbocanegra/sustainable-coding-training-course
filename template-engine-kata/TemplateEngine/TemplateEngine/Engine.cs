@@ -4,9 +4,16 @@ public class Engine
 {
     public ParsedText Parse(Dictionary<string, string> dictionary, string text)
     {
+        if (dictionary == null || dictionary.Count == 0)
+        {
+            return new ParsedText() { Text = text };
+        }
+        
+        var replacedText = text.Replace("${" + dictionary.First().Key + "}", dictionary.First().Value);
+        
         return new ParsedText()
         {
-            Text = text.Replace("${" + dictionary.First().Key + "}", dictionary.First().Value)
+            Text = replacedText
         };
     }
 }

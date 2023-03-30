@@ -19,15 +19,29 @@ public class TemplateEngineShould
         parsedText.Text.Should().Be(expected);
     }
     
-    [Fact]
-    public void ParseTemplateWithOneVariable()
+    [Theory]
+    [InlineData("Hello ${name}", "Hello John")]
+    [InlineData("Hello ${name} ${name}", "Hello John John")]
+    public void ParseTemplateWithOneVariable(string template, string expectedText)
     {
         var templateEngine = new Engine();
         var dictionary = new Dictionary<string, string>() { { "name", "John"} };
-        var template = "Hello ${name}";
 
         var parsedText = templateEngine.Parse(dictionary, template);
         
-        parsedText.Text.Should().Be("Hello John");
+        parsedText.Text.Should().Be(expectedText);
     }
+    
+    [Fact]
+    public void ParseTemplateWithTwoVariables()
+    {
+        var templateEngine = new Engine();
+        var dictionary = new Dictionary<string, string>() { { "name", "John"}, { "lastName", "Smith"} };
+        var template = "Hello ${name} ${lastName}";
+        
+        var parsedText = templateEngine.Parse(dictionary, template);
+        
+        parsedText.Text.Should().Be("Hello John Smith");
+    }
+    
 }
