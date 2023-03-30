@@ -15,16 +15,28 @@ public class WordWrapperShould
 // "hola", 0 -> ???
 
     [Theory]
-    [InlineData("hola", "hola")]
-    [InlineData("jose", "jose")]
-    public void NotWrapText(string text, string expected)
+    [InlineData("hola", "hola", 4)]
+    [InlineData("jose", "jose", 4)]
+    [InlineData("jose", "jose", 8)]
+    [InlineData("Jonathan", "Jonathan", 8)]
+    public void NotWrapTextWhenTextLengthIsLessThanColumns(string text, string expected, int columns)
     {
         var wordWrapper = new WordWrapper();
         
-        var wrappedText = wordWrapper.Wrap(text, 4);
+        var wrappedText = wordWrapper.Wrap(text, columns);
         
         wrappedText.Should().Be(expected);
     }
     
-
+    // "hola", 2 -> "ho\nla"
+    [Theory]
+    [InlineData("hola", "ho\nla", 2)]
+    public void WrapTextWhenTextLengthIsLongerThanColumns(string text, string expected, int columns)
+    {
+        var wordWrapper = new WordWrapper();
+        
+        var wrappedText = wordWrapper.Wrap(text, columns);
+        
+        wrappedText.Should().Be(expected);
+    }
 }
