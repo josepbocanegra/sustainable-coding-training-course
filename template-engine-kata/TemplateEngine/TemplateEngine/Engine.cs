@@ -8,12 +8,15 @@ public class Engine
         {
             return new ParsedText() { Text = text };
         }
-        
-        var replacedText = text.Replace("${" + dictionary.First().Key + "}", dictionary.First().Value);
-        
+
+        foreach (var variable in dictionary)
+        {
+            text = text.Replace("${" + variable.Key + "}", variable.Value);
+        }
+
         return new ParsedText()
         {
-            Text = replacedText
+            Text = text
         };
     }
 }
